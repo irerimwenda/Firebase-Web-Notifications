@@ -1,0 +1,24 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "Tags": {
+      ".indexOn": "ParentLinkID"
+    },
+    "tokens": {
+      ".indexOn": ["uid", "token"],
+      ".read": true,
+    	".write": true,
+      "$token": {
+        ".validate": "newData.hasChildren(['uid', 'token']) && newData.child('uid').val() == auth.uid"
+      }
+    },
+     "notifications": {
+       ".read": true,
+    	 ".write": true,
+        "$notification": {
+         ".validate": "newData.hasChildren(['user', 'message', 'userProfileImage'])"
+      }
+     }
+  }
+}
